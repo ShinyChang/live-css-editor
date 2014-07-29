@@ -1,8 +1,6 @@
 "use strict";
-chrome.devtools.panels.create("Live Style",
-    "css.png",
-    "editor.html",
-    function(panel) {
-      // code invoked on panel creation
-    }
-);
+chrome.devtools.panels.elements.createSidebarPane("LiveCSS",
+    function(sidebar) {
+        // sidebar initialization code here
+        sidebar.setPage('editor.html');
+    });

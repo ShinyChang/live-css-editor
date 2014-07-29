@@ -1,4 +1,9 @@
 live-css-editor
 ===============
 
-A Chrome Extension
+##Easy To Use
+1. Press `F12` to enter dev mode
+2. Switch tab to `Elements`
+3. Switch sub-tab to Live `LiveCSS`
+4. String edit CSS in the editor
+5. Enjoy the change

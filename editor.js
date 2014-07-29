@@ -3,6 +3,7 @@ var textarea = $('#editor')[0];
 var editor = CodeMirror.fromTextArea(textarea, {
     className: "css-editor",
     mode: "css",
+    keyMap: "sublime",
     matchBrackets: true,
     lineNumbers: true,
     lineWrapping: true,
@@ -10,7 +11,6 @@ var editor = CodeMirror.fromTextArea(textarea, {
     autofocus: true,
     styleActiveLine: true
 });
-
 editor.setSize('100%', '100%');
 
 $(editor.display.wrapper).addClass('live-css-editor');
@@ -22,6 +22,13 @@ editor.on('change', function() {
           __live_css_edit__.setAttribute('id', '__live_css_edit__');\
           document.querySelectorAll('body')[0].appendChild(__live_css_edit__);\
        }\
-       __live_css_edit__.innerHTML = '" + editor.getValue().replace(/\n/g, ' ') + "';"
+       __live_css_edit__.innerHTML = '" + editor.getValue().replace(/\n/g, '<br>') + "'.replace(/<br>/g, '\\n');"
     );
 });
+
+chrome.devtools.inspectedWindow.eval(
+    "document.querySelectorAll('#__live_css_edit__')[0].innerHTML", function(res) {
+        editor.setValue(res);
+        editor.focus();
+    }
+);
