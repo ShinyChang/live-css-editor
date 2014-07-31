@@ -1,7 +1,7 @@
 {
     "name": "Live CSS Editor",
     "author": "Shiny",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "Live preview of css change in devtools",
     "devtools_page": "devtools.html",
     "minimum_chrome_version": "18",
